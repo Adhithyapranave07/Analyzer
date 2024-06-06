@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamil Nadu Crop Recommendation Analyzer</title>
+<style>
+/* CSS styles */
+body {
+    background-color: #7d6a37;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #fff;
+    margin: 0;
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.nav-menu li:last-child {
+    margin-right: 0;
+}
+
+.nav-menu li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.main {
+    background-color: #f8f4e3;
+    color: #333;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    font-size: 1rem;
+    display: block;
+    margin: 20px 0 10px;
+}
+
+input, button, select {
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%;
+}
+
+button {
+    background-color: #7d6a37;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #63542c;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.center {
+    text-align: center;
+}
+
+.soil-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 10px;
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="container">
+        <h1 class="logo">Crop Recommender</h1>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="main">
+    <h2>Tamil Nadu Crop Recommendation Analyzer</h2>
+    <div>
+        <label for="districtInput">Enter District:</label>
+        <input type="text" id="districtInput">
+        <button onclick="showSoilTypes()">Show Soil Types</button>
+
+        <div id="soilTypesContainer" class="center"></div>
+
+        <select id="soilSelect" style="display:none;" onchange="recommendCrops()">
+            <option value="">Select Soil Type</option>
+        </select>
+
+        <table id="recommendedCropsTable" style="display:none;">
+            <tr>
+                <th>District</th>
+                <th>Recommended Crops</th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+const districtsData = [
+    { district: "Ariyalur", soilTypes: "Sandy Loam, Clayey Loam, Black Soil", crops: "Rice, Pulses, Millets, Oilseeds, Vegetables" },
+    { district: "Chennai", soilTypes: "Sandy Loam, Clayey Loam, Red Loam", crops: "Rice, Pulses, Millets, Vegetables, Fruits" },
+    { district: "Coimbatore", soilTypes: "Red Loam, Black Loam, Sandy Loam, Alluvial Soil", crops: "Cotton, Sugarcane, Pulses, Groundnut, Vegetables" },
+    { district: "Cuddalore", soilTypes: "Alluvial Soil, Sandy Loam, Clayey Loam", crops: "Rice, Sugarcane, Pulses, Groundnut, Vegetables" },
+    { district: "Dharmapuri", soilTypes: "Red Loam, Sandy Loam, Black Soil", crops: "Millets, Pulses, Oilseeds, Vegetables, Fruits" },
+    { district: "Dindigul", soilTypes: "Black Cotton Soil, Sandy Soil, Red Loam", crops: "Cotton, Sugarcane, Pulses, Groundnut, Vegetables" },
+    { district: "Erode", soilTypes: "Red Loam, Sandy Loam, Black Soil", crops: "Turmeric, Sugarcane, Pulses, Groundnut, Millets" },
+    { district: "Kanchipuram", soilTypes: "Sandy Loam, Clayey Loam, Black Soil", crops: "Rice, Pulses, Millets, Vegetables, Fruits" },
+    { district: "Kanyakumari", soilTypes: "Red Loam, Sandy Loam, Laterite Soil", crops: "Coconut, Rubber, Spices, Vegetables, Fruits" },
+    { district: "Karur", soilTypes: "Sandy Loam, Clayey Loam, Black Soil", crops: "Rice, Pulses, Millets, Groundnut, Vegetables" },
+    { district: "Krishnagiri", soilTypes: "Red Loam, Sandy Loam, Black Soil", crops: "Mangoes, Tamarind, Millets, Pulses, Groundnut" },
+    { district: "Madurai", soilTypes: "Black Cotton Soil, Sandy Soil, Red Loam", crops: "Cotton, Sugarcane, Pulses, Groundnut, Vegetables" },
+    { district: "Nagapattinam", soilTypes: "Sandy Loam, Clayey Loam, Alluvial Soil", crops: "Rice, Pulses, Millets, Sugarcane, Vegetables" },
+    { district: "Namakkal", soilTypes: "Red Loam, Sandy Loam, Black Soil", crops: "Poultry Farming, Dairy Farming, Groundnut, Millets" },
+    { district: "Nilgiris", soilTypes: "Red Loam, Sandy Loam, Laterite Soil", crops: "Tea, Coffee, Fruits, Vegetables, Spices" },
+    { district: "Perambalur", soilTypes: "Sandy Loam, Clayey Loam, Black Soil", crops: "Paddy, Pulses, Millets, Vegetables, Fruits" },
+    { district: "Pudukkottai", soilTypes: "Sandy Loam, Clayey Loam, Black Soil", crops: "Cotton, Groundnut, Pulses, Oilseeds, Vegetables" },
+    { district: "Ramanathapuram", soilTypes: "Sandy Loam, Clayey Loam, Alluvial Soil", crops: "Cotton, Pulses, Groundnut, Sugarcane, Vegetables" },
+    { district: "Salem", soilTypes: "Red Loam, Sandy Loam, Black Soil", crops: "Millets, Pulses, Oilseeds, Vegetables, Fruits" },
+    { district: "Sivaganga", soilTypes: "Sandy Loam, Clayey Loam, Black Soil", crops: "Cotton, Pulses, Groundnut, Sesame, Vegetables" },
+    { district: "Tenkasi", soilTypes: "Laterite Soil, Sandy Loam, Alluvial Soil", crops: "Rice, Pulses, Oilseeds, Fruits, Vegetables" },
+    { district: "Thanjavur", soilTypes: "Black Clayey Soil, Sandy Loam, Red Loam", crops: "Rice, Sugarcane, Pulses, Groundnut, Vegetables" },
+    { district: "Theni", soilTypes: "Sandy Loam, Clayey Loam, Red Loam", crops: "Grapes, Mangoes, Vegetables, Pulses, Groundnut" },
+    { district: "Thoothukudi", soilTypes: "Sandy Loam, Clayey Loam, Alluvial Soil", crops: "Coconut, Palmyra, Groundnut, Pulses, Vegetables" },
+    { district: "Tiruchirappalli", soilTypes: "Black Cotton Soil, Red Loam, Sandy Loam", crops: "Rice, Pulses, Millets, Groundnut, Sugarcane" },
+    { district: "Tirunelveli", soilTypes: "Laterite Soil, Sandy Loam, Alluvial Soil", crops: "Rice, Pulses, Oilseeds, Fruits, Vegetables" },
+    { district: "Tiruppur", soilTypes: "Red Loam, Sandy Loam, Black Soil", crops: "Cotton, Sugarcane, Pulses, Vegetables, Fruits" },
+    { district: "Tiruvallur", soilTypes: "Sandy Loam, Clayey Loam, Red Loam", crops: "Rice, Pulses, Millets, Vegetables, Fruits" },
+    { district: "Tiruvannamalai", soilTypes: "Red Loam, Sandy Loam, Black Soil", crops: "Rice, Groundnut, Pulses, Oilseeds, Vegetables" },
+    { district: "Tiruvarur", soilTypes: "Sandy Loam, Clayey Loam, Alluvial Soil", crops: "Rice, Pulses, Sugarcane, Groundnut, Vegetables" },
+    { district: "Vellore", soilTypes: "Red Loam, Sandy Loam, Black Soil", crops: "Millets, Pulses, Groundnut, Vegetables, Fruits" },
+    { district: "Viluppuram", soilTypes: "Sandy Loam, Clayey Loam, Red Loam", crops: "Rice, Pulses, Sugarcane, Groundnut, Vegetables" },
+    { district: "Virudhunagar", soilTypes: "Sandy Loam, Clayey Loam, Black Soil", crops: "Cotton, Groundnut, Pulses, Sugarcane, Vegetables" }
+];
+
+const soilImages = {
+    "sandy loam": "img/sandyloam.jpeg",
+    "clayey loam": "img/clayey img2.jpgr",
+    "black soil": "img/black-soil.jpg",
+    "red loam": "img/red loam.jpeg",
+    "alluvial soil": "img/Alluvial-soil.jpg",
+    "laterite soil": "img/laterite.jpg",
+    "black cotton soil": "img/blackcotton soil.jpeg",
+    "sandy soil": "img/sandy soil.jpeg",
+};
+
+function showSoilTypes() {
+    const districtInput = document.getElementById("districtInput").value.trim().toLowerCase();
+    const soilTypesContainer = document.getElementById("soilTypesContainer");
+    soilTypesContainer.innerHTML = "";
+    const soilSelect = document.getElementById("soilSelect");
+    soilSelect.style.display = "none";
+    soilSelect.innerHTML = `<option value="">Select Soil Type</option>`;
+
+    const districtData = districtsData.find(d => d.district.toLowerCase().includes(districtInput));
+
+    if (districtData) {
+        const soilTypes = districtData.soilTypes.split(", ");
+        soilTypes.forEach(soilType => {
+            const soilTypeLower = soilType.toLowerCase();
+            const imgSrc = soilImages[soilTypeLower] || "https://example.com/default_soil.jpg";
+            soilTypesContainer.innerHTML += `
+                <div>
+                    <img src="${imgSrc}" alt="${soilType}" class="soil-image">
+                    <p>${soilType}</p>
+                </div>`;
+            soilSelect.innerHTML += `<option value="${soilTypeLower}">${soilType}</option>`;
+        });
+        soilSelect.style.display = "block";
+    } else {
+        soilTypesContainer.innerHTML = "<p>No matching district found.</p>";
+    }
+}
+
+function recommendCrops() {
+    const districtInput = document.getElementById("districtInput").value.trim().toLowerCase();
+    const soilSelect = document.getElementById("soilSelect");
+    const selectedSoil = soilSelect.value;
+    const recommendedCropsTable = document.getElementById("recommendedCropsTable");
+    recommendedCropsTable.style.display = "none";
+    recommendedCropsTable.innerHTML = `
+        <tr>
+            <th>District</th>
+            <th>Recommended Crops</th>
+        </tr>
+    `;
+
+    if (!selectedSoil) return;
+
+    const districtData = districtsData.find(d => d.district.toLowerCase().includes(districtInput));
+
+    if (districtData) {
+        const districtSoilTypes = districtData.soilTypes.toLowerCase().split(", ");
+        if (districtSoilTypes.includes(selectedSoil)) {
+            const row = recommendedCropsTable.insertRow(-1);
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            cell1.textContent = districtData.district;
+            cell2.textContent = districtData.crops;
+            recommendedCropsTable.style.display = "block";
+        }
+    }
+}
+</script>
+</body>
+</html>

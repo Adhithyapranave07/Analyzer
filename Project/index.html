@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uzhavan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+    body {
+      margin: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* CSS for header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f5f5f5;
+    }
+
+    .header .logo {
+      font-size: 25px;
+      font-family: 'Sriracha', cursive;
+      color: #000;
+      text-decoration: none;
+      margin-left: 30px;
+    }
+
+    .nav-items {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #f5f5f5;
+      margin-right: 20px;
+    }
+
+    .nav-items a {
+      text-decoration: none;
+      color: #000;
+      padding: 35px 20px;
+    }
+
+    /* CSS for main element */
+    .intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 520px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("Tractor.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .intro h1 {
+      font-family: sans-serif;
+      font-size: 60px;
+      color: #fff;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .intro p {
+      font-size: 20px;
+      color: #d1d1d1;
+      margin: 20px 0;
+    }
+
+    .intro button {
+      background-color: #5edaf0;
+      color: #000;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
+    }
+
+    .intro button a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .achievements, .about-me, .services, .testimonials, .contact-us {
+      padding: 40px 80px;
+      text-align: center;
+    }
+
+    .achievements .work, .services .service, .testimonials .testimonial {
+      margin: 20px 0;
+    }
+
+    .achievements .work i, .services .service i {
+      font-size: 50px;
+      color: #333333;
+      border-radius: 50%;
+      border: 2px solid #333333;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .achievements .work .work-heading, .services .service .service-heading, .testimonials .testimonial .testimonial-heading {
+      font-size: 20px;
+      color: #333333;
+      text-transform: uppercase;
+      margin: 10px 0;
+    }
+
+    .achievements .work .work-text, .services .service .service-text, .testimonials .testimonial .testimonial-text {
+      font-size: 15px;
+      color: #585858;
+      margin: 10px 0;
+    }
+
+    .about-me-text h2, .services h2, .testimonials h2, .contact-us h2 {
+      font-size: 30px;
+      color: #333333;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .about-me img {
+      width: 500px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .about-me-text p, .contact-us p {
+      font-size: 15px;
+      color: #585858;
+      margin: 10px 0;
+    }
+
+    /* CSS for footer */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #302f49;
+      padding: 40px 80px;
+      color: #fff;
+    }
+
+    .footer .copy {
+      color: #fff;
+    }
+
+    .bottom-links {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .bottom-links .links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 40px;
+    }
+
+    .bottom-links .links span {
+      font-size: 20px;
+      color: #fff;
+      text-transform: uppercase;
+      margin: 10px 0;
+    }
+
+    .bottom-links .links a {
+      text-decoration: none;
+      color: #a1a1a1;
+      padding: 10px 20px;
+    }
+
+    .bottom-links .links a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <a href="#" class="logo">Uzhavan</a>
+    <nav class="nav-items">
+      <a href="index.html">Home</a>
+      <a href="about2.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="mission.html">Mission</a>
+      <a href="Table.html">Stats</a>
+      <a href="login.html">login</a>
+    </nav>
+  </header>
+  <main>
+    <div class="intro">
+      <h1>Soil Based Crop Analysis</h1>
+      <p>Introduction to Soil-Based Crop Management</p>
+      <button><a href="analyzer.html">Analyzer</a></button>
+    </div>
+    <div class="achievements">
+      <div class="work">
+        <i class='fas fa-leaf'></i>
+        <p class="work-heading">Precision Agriculture</p>
+        <p class="work-text">The application enables farmers to make informed decisions about crop selection, maximizing productivity and resource efficiency.</p>
+      </div>
+      <div class="work">
+        <i class="fas fa-bell"></i>
+        <p class="work-heading">Efficient Crop Management</p>
+        <p class="work-text">Reminders and notifications help farmers stay on track with cultivation tasks, reducing the risk of missed deadlines and ensuring timely interventions.</p>
+      </div>
+      <div class="work">
+        <i class="fas fa-rss"></i>
+        <p class="work-heading">Accessibility</p>
+        <p class="work-text">As a web-based platform, the application can be accessed from any device with an internet connection, making it convenient for farmers in diverse locations.</p>
+      </div>
+    </div>
+    <div class="about-me">
+      <div class="about-me-text">
+        <h2>About Soil-Based Crop Management</h2>
+        <p>Soil-based crop management is a strategic approach that involves tailoring agricultural practices to the specific characteristics of different soil types to maximize crop yield and sustainability. This approach revolves around understanding and utilizing the diverse soil types present within a farming environment.</p>
+        <p>With the correct knowledge of soil types, farmers can determine the best crops to grow, when to plant them, and how to manage the soil for optimal growth. Different soil types have different nutrient profiles, pH levels, and water-holding capacities, all of which influence the types of crops that can be grown successfully.</p>
+        <p>Furthermore, soil management practices such as crop rotation, cover cropping, and organic amendments can improve soil health over time, leading to more resilient farming systems. By monitoring soil health and making data-driven decisions, farmers can improve their productivity while also protecting the environment.</p>
+        <p>Our platform offers tools and resources to help farmers analyze their soil, understand its properties, and apply best practices for soil management. This ensures that they can make informed decisions and adopt strategies that enhance crop yield and sustainability.</p>
+        <p>In addition to providing soil analysis, our platform offers educational resources and support to help farmers stay updated with the latest research and techniques in soil management. We believe that empowering farmers with knowledge is key to achieving sustainable agriculture.</p>
+      </div>
+     <img src="img/balaji pee.jpeg"  > </div>
+    <div class="services">
+      <h2>Our Services</h2>
+      <div class="service">
+        <i class="fas fa-flask"></i>
+        <p class="service-heading">Soil Testing</p>
+        <p class="service-text">Comprehensive soil testing services to help you understand the nutrient content, pH levels, and other critical parameters of your soil.</p>
+      </div>
+      <div class="service">
+        <i class="fas fa-chart-line"></i>
+        <p class="service-heading">Crop Recommendations</p>
+        <p class="service-text">Tailored crop recommendations based on soil analysis to maximize yield and improve crop quality.</p>
+      </div>
+      <div class="service">
+        <i class="fas fa-seedling"></i>
+        <p class="service-heading">Soil Health Improvement</p>
+        <p class="service-text">Guidance on soil health improvement practices such as cover cropping, organic amendments, and crop rotation.</p>
+      </div>
+    </div>
+    
+    
+  </main>
+  <footer class="footer">
+    <div class="copy">&copy; 2024 Developer</div>
+    <div class="bottom-links">
+      <div class="links">
+        <span>More Info</span>
+        <a href="#">Home</a>
+        <a href="about2.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="links">
+        <span>Social Links</span>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

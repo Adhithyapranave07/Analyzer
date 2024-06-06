@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+.intro{
+  background:url(Tractor.jpg);
+}
+
+/* CSS for header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 10px 30px;
+}
+
+.header .logo {
+  font-size: 25px;
+  font-family: 'Sriracha', cursive;
+  color: #000;
+  text-decoration: none;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-items a {
+  text-decoration: none;
+  color: #000;
+  padding: 20px 15px;
+  font-size: 18px;
+}
+
+.nav-items a:hover {
+  color: #5edaf0;
+}
+
+/* CSS for main content */
+.main-content {
+  padding: 20px;
+}
+
+.intro {
+  background-color: #f5f5f5;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.intro h1 {
+  font-size: 48px;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.intro p {
+  font-size: 18px;
+  color: #666666;
+  margin-bottom: 40px;
+}
+
+.intro button {
+  background-color: #5edaf0;
+  color: #000;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.intro button a {
+  color: #000;
+  text-decoration: none;
+}
+
+.intro button:hover {
+  background-color: #45c1d4;
+}
+
+.achievements {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.achievements .work {
+  flex: 1;
+  text-align: center;
+}
+
+.achievements .work i {
+  font-size: 50px;
+  color: #333333;
+  border-radius: 50%;
+  border: 2px solid #333333;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.achievements .work .work-heading {
+  font-size: 24px;
+  color: #333333;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.achievements .work .work-text {
+  font-size: 16px;
+  color: #585858;
+  margin-bottom: 0;
+}
+
+.about-me {
+  background-color: #f9f9f9;
+  padding: 80px 0;
+}
+
+.about-me-text {
+  width: 100%;
+  padding: 0 40px;
+}
+
+.about-me-text h2 {
+  font-size: 36px;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.about-me-text p {
+  font-size: 18px;
+  color: #666666;
+  margin-bottom: 20px;
+  line-height: 1.8; /* Increased line height to make it look more messy */
+  text-align: justify; /* Justify the text to make it look less organized */
+}
+
+.about-me-text p:nth-child(odd) {
+  font-style: italic; /* Italicize every odd paragraph to add variation and messiness */
+}
+
+/* Add styling for the services section */
+.services {
+  background-color: #f5f5f5;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 36px;
+  color: #333333;
+  margin-bottom: 40px;
+}
+
+.service {
+  margin-bottom: 40px;
+}
+
+.service i {
+  font-size: 50px;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.service-heading {
+  font-size: 24px;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.service-text {
+  font-size: 18px;
+  color: #666666;
+  margin-bottom: 0;
+}
+
+/* Add styling for the advantages section */
+.advantages {
+  background-color: #fff;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.advantages h2 {
+  font-size: 36px;
+  color: #333333;
+  margin-bottom: 40px;
+}
+
+.advantage {
+  margin-bottom: 40px;
+}
+
+.advantage i {
+  font-size: 50px;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.advantage-heading {
+  font-size: 24px;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.advantage-text {
+  font-size: 18px;
+  color: #666666;
+  margin-bottom: 0;
+}
+
+/* Add styling for the disadvantages section */
+.disadvantages {
+  background-color: #f5f5f5;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.disadvantages h2 {
+  font-size: 36px;
+  color: #333333;
+  margin-bottom: 40px;
+}
+
+.disadvantage {
+  margin-bottom: 40px;
+}
+
+.disadvantage i {
+  font-size: 50px;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.disadvantage-heading {
+  font-size: 24px;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.disadvantage-text {
+  font-size: 18px;
+  color: #666666;
+  margin-bottom: 0;
+}
+
+/* CSS for footer */
+.footer {
+  background-color: #302f49;
+  color: #fff;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.footer .copy {
+  margin-bottom: 20px;
+}
+
+.bottom-links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+}
+
+.links span {
+  font-size: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #a1a1a1;
+  margin-bottom: 5px;
+}
+
+.links a:hover {
+  color: #5edaf0;
+}
